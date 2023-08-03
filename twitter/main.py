@@ -28,9 +28,12 @@ api = tweepy.API(authenticator, wait_on_rate_limit=True)
 
 crypto_currency = "Dogecoin"
 
+start = "2023-04-04"
+end = "2023-04-05"
+
 search = f'#{crypto_currency} -filter:retweets'
 
-tweet_cursor = tweepy.Cursor(api.search_tweets, q=search, lang ='en', tweet_mode='extended').items(100)
+tweet_cursor = tweepy.Cursor(api.search_tweets, q=search, lang ='en', until = end, since = start, tweet_mode='extended').items(100)
 
 tweets = [tweet.full_text for tweet in tweet_cursor]
 
